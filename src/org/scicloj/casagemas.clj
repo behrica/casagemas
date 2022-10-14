@@ -19,13 +19,6 @@
                     (-> wrapped-value
                         v/mark-presented
                         (merge (meta wrapped-value))))}
-                        
-                        ;; (assoc :nextjournal/value [(present wrapped-value)])
-
-
-
-
-
 
    ;; plotly
    {:pred (fn [v] (= :plotly (:org.scicloj/rendering-hint (meta v))))

@@ -4,11 +4,25 @@ FIXME: my new library.
 
 ## Usage
 
-| key/predicate/class         | value class / type                       | definition |
-|-----------------------------|----------------------------------------- | ---------- |
-|tech.v3.dataset/dataset?     |  tech.v3.dataset.impl.dataset.Dataset    |            | 
-|:vega-lite                   |  map                                     |
-|:mermaid                     |  :string    
+Global table of well known rendering hints (published somewhere else)
+
+| key/predicate/class                  | value class / type                       | definition |
+|----------------------------------    |----------------------------------------- | ---------- |
+|tech.v3.dataset/dataset?              |  tech.v3.dataset.impl.dataset.Dataset    |            | 
+|org.scicloj.rendering-hint :vega-lite |  map                                     |
+|org.scicloj.rendering-hint :mermaid   |  :string                                 |            |
+|....  | ... ... |...
+
+
+Table of well known rendering hints currently supported by the casegamas renderer for Clerk
+
+| key/predicate/class                  | value class / type                       | definition |
+|----------------------------------    |----------------------------------------- | ---------- |
+|tech.v3.dataset/dataset?              |  tech.v3.dataset.impl.dataset.Dataset    |            | 
+|org.scicloj.rendering-hint :vega-lite |  map                                     |
+|org.scicloj.rendering-hint :mermaid   |  :string                                 |            |
+
+
 
 
 Invoke a library API function from the command-line:
