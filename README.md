@@ -1,9 +1,10 @@
 # casagemas
 
-FIXME: my new library.
+Collection of clerk viewers supporting `rendering-hints` in metadata
 
-## Usage
+## rendering hints
 
+### Global table
 Global table of well known rendering hints (published somewhere else)
 
 | key/predicate/class                  | value class / type                       | definition |
@@ -14,44 +15,37 @@ Global table of well known rendering hints (published somewhere else)
 |....  | ... ... |...
 
 
-Table of well known rendering hints currently supported by the casegamas renderer for Clerk
+### supported by **this** renderer using Clerk
+Table of rendering hints currently supported by the casegamas renderer for Clerk
 
 | key/predicate/class                  | value class / type                       | definition |
 |----------------------------------    |----------------------------------------- | ---------- |
 |tech.v3.dataset/dataset?              |  tech.v3.dataset.impl.dataset.Dataset    |            | 
 |org.scicloj.rendering-hint :vega-lite |  map                                     |
 |org.scicloj.rendering-hint :mermaid   |  :string                                 |            |
+|org.scicloj.rendering-hint :tex       |  :string                                 |            |
+|org.scicloj.rendering-hint :plotly    |  :plotly                                 |            |
+
+If non of the predicates match, the usual Clerk viewer selection is used
+and the value is rendered as default by Clerk.
 
 
+## usage
+
+This library contains a collection of Clerk viewers definition.
+The viewer get activated by standard metadata of a var, see this list (http://xxxxx)
+
+The following code in the repl adds the viewers of casagemas to Clerk, for all namespaces.
+
+```clojure
+(nextjournal.clerk.viewer/reset-viewers!
+   :default
+   (-> (nextjournal.clerk.viewer/get-default-viewers)
+       ;; (nextjournal.clerk.viewer/add-viewers [nextjournal.clerk.tap/tap-viewer])
+       (nextjournal.clerk.viewer/add-viewers (org.scicloj.casagemas/clerk-viewers))))
+```
 
 
-Invoke a library API function from the command-line:
-
-    $ clojure -X org.scicloj.casagemas/foo :a 1 :b '"two"'
-    {:a 1, :b "two"} "Hello, World!"
-
-Run the project's tests (they'll fail until you edit them):
-
-    $ clojure -T:build test
-
-Run the project's CI pipeline and build a JAR (this will fail until you edit the tests to pass):
-
-    $ clojure -T:build ci
-
-This will produce an updated `pom.xml` file with synchronized dependencies inside the `META-INF`
-directory inside `target/classes` and the JAR in `target`. You can update the version (and SCM tag)
-information in generated `pom.xml` by updating `build.clj`.
-
-Install it locally (requires the `ci` task be run first):
-
-    $ clojure -T:build install
-
-Deploy it to Clojars -- needs `CLOJARS_USERNAME` and `CLOJARS_PASSWORD` environment
-variables (requires the `ci` task be run first):
-
-    $ clojure -T:build deploy
-
-Your library will be deployed to org.scicloj/casagemas on clojars.org by default.
 
 ## License
 
