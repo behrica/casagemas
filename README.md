@@ -22,11 +22,11 @@ Table of rendering hints currently supported by the casegamas renderer for Clerk
 |----------------------------------    |----------------------------------------- | ---------- |
 |tech.v3.dataset/dataset?              |  tech.v3.dataset.impl.dataset.Dataset    |            | 
 |org.scicloj.rendering-hint :vega-lite |  :map                                     |
-|org.scicloj.rendering-hint :mermaid   |  :string                                 |            |
-|org.scicloj.rendering-hint :tex       |  :string                                 |            |
+|org.scicloj.rendering-hint :mermaid   |  :string (wrapped in map)                                |            |
+|org.scicloj.rendering-hint :tex       |  :string (wrapped in map)                                |            |
 |org.scicloj.rendering-hint :plotly    |  :map                                 |            |
 |org.scicloj.rendering-hint :cytoscape |  :map                                 |            |
-|org.scicloj.rendering-hint :kroki     |  :string                                 |            |
+|org.scicloj.rendering-hint :kroki     |  :string (wrapped in map)                                |            |
 
 
 If non of the predicates match, the usual Clerk viewer selection is used
