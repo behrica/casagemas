@@ -21,10 +21,13 @@ Table of rendering hints currently supported by the casegamas renderer for Clerk
 | key/predicate/class                  | value class / type                       | definition |
 |----------------------------------    |----------------------------------------- | ---------- |
 |tech.v3.dataset/dataset?              |  tech.v3.dataset.impl.dataset.Dataset    |            | 
-|org.scicloj.rendering-hint :vega-lite |  map                                     |
+|org.scicloj.rendering-hint :vega-lite |  :map                                     |
 |org.scicloj.rendering-hint :mermaid   |  :string                                 |            |
 |org.scicloj.rendering-hint :tex       |  :string                                 |            |
-|org.scicloj.rendering-hint :plotly    |  :plotly                                 |            |
+|org.scicloj.rendering-hint :plotly    |  :map                                 |            |
+|org.scicloj.rendering-hint :cytoscape |  :map                                 |            |
+|org.scicloj.rendering-hint :kroki     |  :string                                 |            |
+
 
 If non of the predicates match, the usual Clerk viewer selection is used
 and the value is rendered as default by Clerk.
@@ -33,16 +36,27 @@ and the value is rendered as default by Clerk.
 ## usage
 
 This library contains a collection of Clerk viewers definition.
+This libraries does not declare depenencies in deps.edn to any lib it might require.
+
+
 The viewer get activated by standard metadata of a var, see this list (http://xxxxx)
 
+
+
 The following code in the repl adds the viewers of casagemas to Clerk, for all namespaces.
+Attention: add read the viewers from a certain namespace requires teh ns. For some of them this needs
+specific libs on the classpath. See the code to discover which are needed.
 
 ```clojure
 (nextjournal.clerk.viewer/reset-viewers!
-   :default
-   (-> (nextjournal.clerk.viewer/get-default-viewers)
-       ;; (nextjournal.clerk.viewer/add-viewers [nextjournal.clerk.tap/tap-viewer])
-       (nextjournal.clerk.viewer/add-viewers (org.scicloj.casagemas/clerk-viewers))))
+   ;; :default
+   (find-ns 'nextjournal.clerk.tap)
+   (-> nextjournal.clerk.viewer/default-viewers
+       (nextjournal.clerk.viewer/add-viewers [nextjournal.clerk.tap/tap-viewer])
+       (nextjournal.clerk.viewer/add-viewers
+        (concat (org.scicloj.casagemas/viewers)
+                (org.scicloj.casagemas.dataset/viewers)
+                (org.scicloj.casagemas.kroki/viewers)))))
 ```
 
 

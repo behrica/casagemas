@@ -1,11 +1,14 @@
 (ns notebook
-  (:require  [tech.v3.dataset :as ds]))
+  (:require  [tech.v3.dataset :as ds]
+             [clj-http.client :as client]
+             [nextjournal.clerk :as clerk]
+             [org.scicloj.casagemas.kroki :as kroki]
+             [nextjournal.clerk.viewer :as v]))
 
 
 
 ^{:org.scicloj/rendering-hint :vega-lite
   :nextjournal.clerk/width :full}
-
 {:width 650
  :height 400
  :data {:url "https://vega.github.io/vega-datasets/data/us-10m.json"
@@ -30,7 +33,6 @@
     Crash --> [*]"}
 
 ^{:org.scicloj/rendering-hint :tex}
-  
 {:spec "G_{\\mu\\nu}\\equiv R_{\\mu\\nu} - {\\textstyle 1 \\over 2}R\\,g_{\\mu\\nu} = {8 \\pi G \\over c^4} T_{\\mu\\nu}"}
 
 ^{:org.scicloj/rendering-hint :plotly}
@@ -39,6 +41,43 @@
 
 
 (ds/->dataset {:a ["first column"]})
-(type {})
+
+
+^{:org.scicloj/rendering-hint :kroki
+  :diagram-type :plantuml}
+{:spec
+ "
+@startuml
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: Another authentication Response
+@enduml
+"}
+
+
+^{:org.scicloj/rendering-hint :cytoscape}
+{:elements {:nodes [{:data {:id "a" :parent "b"} :position {:x 215 :y 85}}
+                    {:data {:id "b"}}
+                    {:data {:id "c" :parent "b"} :position {:x 300 :y 85}}
+                    {:data {:id "d"} :position {:x 215 :y 175}}
+                    {:data {:id "e"}}
+                    {:data {:id "f" :parent "e"} :position {:x 300 :y 175}}]
+              :edges [{:data {:id "ad" :source "a" :target "d"}}
+                      {:data {:id "eb" :source "e" :target "b"}}]}
+   :style [{:selector "node"
+            :css {:content "data(id)"
+                  :text-valign "center"
+                  :text-halign "center"}}
+           {:selector "parent"
+            :css {:text-valign "top"
+                  :text-halign "center"}}
+           {:selector "edge"
+            :css {:curve-style "bezier"
+                  :target-arrow-shape "triangle"}}]
+   :layout {:name "preset"
+            :padding 5}}
+
 
 ;; (clerk/clear-cache!)
