@@ -1,9 +1,10 @@
 (ns notebook
   (:require  [tech.v3.dataset :as ds]
-             [clj-http.client :as client]
-             [nextjournal.clerk :as clerk]
-             [org.scicloj.casagemas.kroki :as kroki]
-             [nextjournal.clerk.viewer :as v]))
+             [clj-http.client :as client]))
+             ;; [nextjournal.clerk :as clerk]
+
+             ;; [nextjournal.clerk.viewer :as v]
+
 
 
 
