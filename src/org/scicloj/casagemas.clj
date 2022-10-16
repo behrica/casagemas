@@ -7,24 +7,32 @@
 
    ;; vega lite viewer
    {:pred (fn [v] (= :vega-lite (:org.scicloj/rendering-hint (meta v))))
-    :render-fn (quote v/vega-lite-viewer)
-    :transform-fn (fn [wrapped-value]
-                    (def wrapped-value wrapped-value)
-                    (-> wrapped-value
-                        v/mark-presented
-                        (merge (meta wrapped-value))))}
+    :transform-fn v/vl}
 
    ;; plotly
    {:pred (fn [v] (= :plotly (:org.scicloj/rendering-hint (meta v))))
-    :render-fn '(fn [value] (v/plotly-viewer value))
-    :transform-fn v/mark-presented}
-
+    :transform-fn (fn [val] (v/plotly val))}
 
 
    ;; tex
+   ;; {:pred (fn [v] (= :tex (:org.scicloj/rendering-hint (meta v))))
+   ;;  :render-fn '(fn [value] (v/katex-viewer (:spec value)))
+   ;;  :transform-fn v/mark-presented}
+
    {:pred (fn [v] (= :tex (:org.scicloj/rendering-hint (meta v))))
-    :render-fn '(fn [value] (v/katex-viewer (:spec value)))
-    :transform-fn v/mark-presented}
+    :transform-fn (fn [val]
+                    (def val val)
+                    (v/tex (clerk/update-val #(:spec val))))}
+
+
+   ;;  markdown
+   {:pred (fn [v] (= :markdown (:org.scicloj/rendering-hint (meta v))))
+    ;; :render-fn '(fn [value] (v/markdown-viewer (:spec value)))
+
+    :transform-fn (fn [val]
+
+                    (v/md
+                     (:spec val)))}
 
 
    ;; mermaid viwer
@@ -47,6 +55,6 @@
                   (v/html (when value [v/with-d3-require {:package ["cytoscape@3.21.0"]}
                                        (fn [cytoscape]
                                          [:div {:style {:height "500px"}
-                                                 :ref (fn [el]
-                                                        (when el
-                                                          (-> value (assoc :container el) clj->js cytoscape)))}])])))}])
+                                                :ref (fn [el]
+                                                       (when el
+                                                         (-> value (assoc :container el) clj->js cytoscape)))}])])))}])

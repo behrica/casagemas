@@ -1,10 +1,4 @@
-(ns notebook
-  (:require  [tech.v3.dataset :as ds]
-             [clj-http.client :as client]))
-             ;; [nextjournal.clerk :as clerk]
-
-             ;; [nextjournal.clerk.viewer :as v]
-
+(ns notebook)
 
 
 
@@ -81,4 +75,17 @@ Alice <-- Bob: Another authentication Response
             :padding 5}}
 
 
-;; (clerk/clear-cache!)
+
+;; (clerk/md "1. Lambda\n2. Eval\n3. Apply")
+
+^{:org.scicloj/rendering-hint :markdown}
+{:spec "1. Lambda\n2. Eval\n3. Apply"}
+
+
+
+(comment
+  ;;  for testing only
+  (require  '[nextjournal.clerk :as clerk]
+            '[nextjournal.clerk.viewer :as v]))
+
+  ;; (clerk/clear-cache!)

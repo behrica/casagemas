@@ -27,6 +27,7 @@ Table of rendering hints currently supported by the casegamas renderer for Clerk
 |org.scicloj.rendering-hint :plotly    |  :map                                 |            |
 |org.scicloj.rendering-hint :cytoscape |  :map                                 |            |
 |org.scicloj.rendering-hint :kroki     |  :string (wrapped in map)                                |            |
+|org.scicloj.rendering-hint :markdown     |  :string (wrapped in map)                                |            |
 
 
 If non of the predicates match, the usual Clerk viewer selection is used
