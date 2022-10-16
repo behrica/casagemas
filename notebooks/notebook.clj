@@ -1,4 +1,5 @@
-(ns notebook)
+(ns notebook
+  (:require [tech.v3.dataset :as ds]))
 
 
 
@@ -30,8 +31,10 @@
 ^{:org.scicloj/rendering-hint :latex-project.org/latex}
 {:spec "G_{\\mu\\nu}\\equiv R_{\\mu\\nu} - {\\textstyle 1 \\over 2}R\\,g_{\\mu\\nu} = {8 \\pi G \\over c^4} T_{\\mu\\nu}"}
 
-^{:org.scicloj/rendering-hint :github.com/plotly}
-{:data [{:z [[1 2 3] [3 2 1]] :type "surface"}]}
+
+
+
+
 
 
 
@@ -78,10 +81,25 @@ Alice <-- Bob: Another authentication Response
 
 
 
-^{:org.scicloj/rendering-hint :markdown}
+^{:org.scicloj/rendering-hint :nextjournal/markdown}
 {:spec "1. Lambda\n2. Eval\n3. Apply"}
 
+^{:org.scicloj/rendering-hint :clojure/table}
+{:col/a [1 2 3 4] :col/b [1 2 3] :col/c [1 2 3]}
 
+^{:org.scicloj/rendering-hint :code}
+{:spec "(+ 1 2)"}
+
+^{:org.scicloj/rendering-hint :html}
+[:h1 "Ohai Hiccup 👋"]
+
+(defn make-html []
+  [:h2 "Ohai Hiccup"])
+
+(with-meta
+  (make-html)
+  {:org.scicloj/rendering-hint :html})
+  
 
 (comment
   ;;  for testing only

@@ -24,10 +24,24 @@
 
 
    ;;  markdown
-   {:pred (fn [v] (= :markdown
+   {:pred (fn [v] (= :nextjournal/markdown
                     (:org.scicloj/rendering-hint (meta v))))
     :transform-fn (comp v/md (clerk/update-val :spec))}
 
+   ;;  table
+   {:pred (fn [v] (= :clojure/table
+                    (:org.scicloj/rendering-hint (meta v))))
+    :transform-fn v/table}
+
+   ;;  code
+   {:pred (fn [v] (= :code
+                    (:org.scicloj/rendering-hint (meta v))))
+    :transform-fn (comp v/code (clerk/update-val :spec))}
+
+   ;;  html
+   {:pred (fn [v] (= :html
+                    (:org.scicloj/rendering-hint (meta v))))
+    :transform-fn v/html}
 
 
    ;; mermaid viewer

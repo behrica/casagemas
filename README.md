@@ -2,6 +2,30 @@
 
 Collection of clerk viewers supporting `rendering-hints` in metadata
 
+The buildin Clerk viewer selection is based on either a function call and giving / naming a viewer
+or on metadata which expresses the same, namely the name of a Clerk viewer to choose.
+
+This repo is an experiment, to see if "Clerk viewer selection" can be soly based on the "metadata" of the value to render .
+
+We define below how Clerk can be hinted about the "type of data" a value has,
+and then we do the right think, so render it as good as we can.
+
+So instead of telling Clerk "which viewer" we tell "which type of data" and it picks the viewer automatically.
+
+So far casagemas supports the below listed hints, which matches with the build-in viewers of Clerk + some more.
+So if for example, a piece of data (like a map) has metadata:
+
+``` clojure
+{org.scicloj.rendering-hint :vega.github.io/vega-lite}
+```
+
+casagemas will do its best to render it, which will be using the Clerk build-in vega-lite viewer.
+
+This library is expected to grow over time and support far more data types and custom viewers.
+PRs are welcome.
+
+Other graphical tools are invited to do the same, and do their best to render a hinted value accordingly.
+
 ## rendering hints
 
 ### Global table
@@ -16,13 +40,14 @@ Global table of well known rendering hints (published somewhere else)
 |org.scicloj.rendering-hint :github.com/plotly    |  :map                                 |            |
 |org.scicloj.rendering-hint :cytoscape.org/cytoscape |  :map                                 |            |
 |org.scicloj.rendering-hint :kroki.io/kroki     |  :string (wrapped in map)                                |            |
-|org.scicloj.rendering-hint :markdown     |  :string (wrapped in map)                                |            |
+|org.scicloj.rendering-hint :nextjournal/markdown     |  :string (wrapped in map)                                |            |
 |org.scicloj.rendering-hint :github.com/stathissideris/dali | map | | |
 |org.scicloj.rendering-hint :github.com/JonyEpsilon/gg4clj | map | | | 
+|org.scicloj.rendering-hint :clojure/table | map | | | 
+|org.scicloj.rendering-hint :code | :string (wrapped in map) | | | 
 
-
-### supported by **this** renderer using Clerk
-Table of rendering hints currently supported by the casegamas renderer for Clerk
+### supported by **this** viewer  using Clerk
+Table of rendering hints currently supported by the casegamas viewer for Clerk
 
 | key/predicate/class                  | value class / type                       | definition |
 |----------------------------------    |----------------------------------------- | ---------- |
@@ -33,8 +58,9 @@ Table of rendering hints currently supported by the casegamas renderer for Clerk
 |org.scicloj.rendering-hint :github.com/plotly    |  :map                                 |            |
 |org.scicloj.rendering-hint :cytoscape.org/cytoscape |  :map                                 |            |
 |org.scicloj.rendering-hint :kroki.io/kroki     |  :string (wrapped in map)                                |            |
-|org.scicloj.rendering-hint :markdown     |  :string (wrapped in map)                                |            |
-
+|org.scicloj.rendering-hint :nextjournal/markdown     |  :string (wrapped in map)                                |            |
+|org.scicloj.rendering-hint :clojure/table | map | | | 
+|org.scicloj.rendering-hint :code | :string (wrapped in map) | | | 
 
 If non of the predicates match, the usual Clerk viewer selection is used
 and the value is rendered as default by Clerk.
@@ -51,8 +77,9 @@ The viewer get activated by standard metadata of a var, see this list (http://xx
 
 
 The following code in the repl adds the viewers of casagemas to Clerk, for all namespaces.
-Attention: add read the viewers from a certain namespace requires teh ns. For some of them this needs
+Attention: adding the viewers from a ns `requires` teh ns. For some of them this expects 
 specific libs on the classpath. See the code to discover which are needed.
+This will be documented better soon.
 
 ```clojure
 (nextjournal.clerk.viewer/reset-viewers!
