@@ -1,18 +1,27 @@
 # casagemas
 
-Collection of clerk viewers supporting `rendering-hints` in metadata
+Collection of clerk viewers supporting `rendering-hints` via Clojure metadata.
 
-The buildin Clerk viewer selection is based on either a function call and giving / naming a viewer
-or on metadata which expresses the same, namely the name of a Clerk viewer to choose.
+The built-in Clerk viewer selection is based on either a function call and giving / naming a viewer
+or on metadata which expresses the same, namely the name of a Clerk viewer to choose (or specify as custom viewer)
 
 This repo is an experiment, to see if "Clerk viewer selection" can be soly based on the "metadata" of the value to render .
+
+This would then allow to create Clojure notebook-type of documents, which are independent of Clerk,
+and could be rendered as well by other tools.
+
+See the provided `notebooks/notebook.clj` as an example. It does not contain any Clerk API call or any Clerk specific metadata.
+
+This project can become as well a repository of custom viewers for Clerk.
+
+## rendering-hints
 
 We define below how Clerk can be hinted about the "type of data" a value has,
 and then we do the right think, so render it as good as we can.
 
 So instead of telling Clerk "which viewer" we tell "which type of data" and it picks the viewer automatically.
 
-So far casagemas supports the below listed hints, which matches with the build-in viewers of Clerk + some more.
+So far casagemas supports the below listed rendering hints, which matches with the build-in viewers of Clerk + some more.
 So if for example, a piece of data (like a map) has metadata:
 
 ``` clojure
@@ -31,9 +40,9 @@ Other graphical tools are invited to do the same, and do their best to render a 
 ### Global table
 Global table of well known rendering hints (***to be published somewhere else, not here***)
 
-| key/predicate/class                                        | value class / type                   | definition                     |
-|------------------------------------------------------------|--------------------------------------|--------------------------------|
-| tech.v3.dataset/dataset?                                   | tech.v3.dataset.impl.dataset.Dataset | tech.ml.dataset instance       |
+| key/predicate/class                                         | value class / type                   | definition                     |
+|-------------------------------------------------------------|--------------------------------------|--------------------------------|
+| tech.v3.dataset/dataset?                                    | tech.v3.dataset.impl.dataset.Dataset | tech.ml.dataset instance       |
 | :org.scicloj.rendering-hint :vega.github.io/vega-lite       | :map                                 | vega lite data spec            |
 | :org.scicloj.rendering-hint :mermaid-js.github.io/mermaid   | :string (wrapped in map)             | mermaid spec                   |
 | :org.scicloj.rendering-hint :latex-project.org/latex        | :string (wrapped in map)             | latex expression               |
@@ -49,9 +58,9 @@ Global table of well known rendering hints (***to be published somewhere else, n
 ### supported by **this** viewer  using Clerk
 Table of rendering hints currently supported by the casegamas viewer for Clerk
 
-| key/predicate/class                                      | value class / type                   | definition |   |
-|----------------------------------------------------------|--------------------------------------|------------|---|
-| tech.v3.dataset/dataset?                                 | tech.v3.dataset.impl.dataset.Dataset |            |   |
+| key/predicate/class                                       | value class / type                   | definition |   |
+|-----------------------------------------------------------|--------------------------------------|------------|---|
+| tech.v3.dataset/dataset?                                  | tech.v3.dataset.impl.dataset.Dataset |            |   |
 | :org.scicloj.rendering-hint :vega.github.io/vega-lite     | :map                                 |            |   |
 | :org.scicloj.rendering-hint :mermaid-js.github.io/mermaid | :string (wrapped in map)             |            |   |
 | :org.scicloj.rendering-hint :latex-project.org/latex      | :string (wrapped in map)             |            |   |
@@ -72,7 +81,7 @@ This library contains a collection of Clerk viewers definition.
 This libraries does not declare dependencies in deps.edn to any lib it might require.
 
 
-The viewer get activated by standard metadata of a var, see this list (http://xxxxx)
+The viewer get activated by standard Clojure metadata of a value, see this list (http://xxxxx)
 
 
 
