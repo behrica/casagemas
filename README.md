@@ -31,36 +31,36 @@ Other graphical tools are invited to do the same, and do their best to render a 
 ### Global table
 Global table of well known rendering hints (***to be published somewhere else, not here***)
 
-| key/predicate/class                  | value class / type                       | definition |
-|----------------------------------    |----------------------------------------- | ---------- |
-|tech.v3.dataset/dataset?              |  tech.v3.dataset.impl.dataset.Dataset    |            | 
-|org.scicloj.rendering-hint :vega.github.io/vega-lite |  :map                                     |
-|org.scicloj.rendering-hint :mermaid-js.github.io/mermaid   |  :string (wrapped in map)                                |            |
-|org.scicloj.rendering-hint :latex-project.org/latex       |  :string (wrapped in map)                                |            |
-|org.scicloj.rendering-hint :github.com/plotly    |  :map                                 |            |
-|org.scicloj.rendering-hint :cytoscape.org/cytoscape |  :map                                 |            |
-|org.scicloj.rendering-hint :kroki.io/kroki     |  :string (wrapped in map)                                |            |
-|org.scicloj.rendering-hint :nextjournal/markdown     |  :string (wrapped in map)                                |            |
-|org.scicloj.rendering-hint :github.com/stathissideris/dali | map | | |
-|org.scicloj.rendering-hint :github.com/JonyEpsilon/gg4clj | map | | | 
-|org.scicloj.rendering-hint :clojure/table | map | | | 
-|org.scicloj.rendering-hint :code | :string (wrapped in map) | | | 
+| key/predicate/class                                        | value class / type                   | definition                     |
+|------------------------------------------------------------|--------------------------------------|--------------------------------|
+| tech.v3.dataset/dataset?                                   | tech.v3.dataset.impl.dataset.Dataset | tech.ml.dataset instance       |
+| org.scicloj.rendering-hint :vega.github.io/vega-lite       | :map                                 | vega lite data spec            |
+| org.scicloj.rendering-hint :mermaid-js.github.io/mermaid   | :string (wrapped in map)             | mermaid spec                   |
+| org.scicloj.rendering-hint :latex-project.org/latex        | :string (wrapped in map)             | latex expression               |
+| org.scicloj.rendering-hint :github.com/plotly              | :map                                 | plotly data spec               |
+| org.scicloj.rendering-hint :cytoscape.org/cytoscape        | :map                                 | cytoscape data spec            |
+| org.scicloj.rendering-hint :kroki.io/kroki                 | :string (wrapped in map)             | kroki supported string         |
+| org.scicloj.rendering-hint :nextjournal/markdown           | :string (wrapped in map)             | Nextjournal markdown spec      |
+| org.scicloj.rendering-hint :github.com/stathissideris/dali | :map                                 | Dali spec                      |
+| org.scicloj.rendering-hint :github.com/JonyEpsilon/gg4clj  | :map                                 | gg4cl spec                     |
+| org.scicloj.rendering-hint :clojure/table                  | :map                                 | regular table-like clojure map |
+| org.scicloj.rendering-hint :code                           | :string (wrapped in map)             | source code                    |
 
 ### supported by **this** viewer  using Clerk
 Table of rendering hints currently supported by the casegamas viewer for Clerk
 
-| key/predicate/class                  | value class / type                       | definition |
-|----------------------------------    |----------------------------------------- | ---------- |
-|tech.v3.dataset/dataset?              |  tech.v3.dataset.impl.dataset.Dataset    |            | 
-|org.scicloj.rendering-hint :vega.github.io/vega-lite |  :map                                     |
-|org.scicloj.rendering-hint :mermaid-js.github.io/mermaid   |  :string (wrapped in map)                                |            |
-|org.scicloj.rendering-hint :latex-project.org/latex       |  :string (wrapped in map)                                |            |
-|org.scicloj.rendering-hint :github.com/plotly    |  :map                                 |            |
-|org.scicloj.rendering-hint :cytoscape.org/cytoscape |  :map                                 |            |
-|org.scicloj.rendering-hint :kroki.io/kroki     |  :string (wrapped in map)                                |            |
-|org.scicloj.rendering-hint :nextjournal/markdown     |  :string (wrapped in map)                                |            |
-|org.scicloj.rendering-hint :clojure/table | map | | | 
-|org.scicloj.rendering-hint :code | :string (wrapped in map) | | | 
+| key/predicate/class                                      | value class / type                   | definition |   |
+|----------------------------------------------------------|--------------------------------------|------------|---|
+| tech.v3.dataset/dataset?                                 | tech.v3.dataset.impl.dataset.Dataset |            |   |
+| org.scicloj.rendering-hint :vega.github.io/vega-lite     | :map                                 |            |   |
+| org.scicloj.rendering-hint :mermaid-js.github.io/mermaid | :string (wrapped in map)             |            |   |
+| org.scicloj.rendering-hint :latex-project.org/latex      | :string (wrapped in map)             |            |   |
+| org.scicloj.rendering-hint :github.com/plotly            | :map                                 |            |   |
+| org.scicloj.rendering-hint :cytoscape.org/cytoscape      | :map                                 |            |   |
+| org.scicloj.rendering-hint :kroki.io/kroki               | :string (wrapped in map)             |            |   |
+| org.scicloj.rendering-hint :nextjournal/markdown         | :string (wrapped in map)             |            |   |
+| org.scicloj.rendering-hint :clojure/table                | :map                                 |            |   |
+| org.scicloj.rendering-hint :code                         | :string (wrapped in map)             |            |   |
 
 If non of the predicates match, the usual Clerk viewer selection is used
 and the value is rendered as default by Clerk.
