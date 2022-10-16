@@ -9,14 +9,13 @@
                                     ;; :as :byte-array
                                     :form-params
                                     {:diagram_source s
-                                     :diagram_type (name type)
-                                     :output_format (name format)}}))
+                                     :diagram_type (name type) :output_format (name format)}}))
 
 (defn viewers []
   [
    {:pred (fn [v]
-            ;; (def v v)
-            (= :kroki (:org.scicloj/rendering-hint (meta v))))
+            (= :kroki.io/kroki
+               (:org.scicloj/rendering-hint (meta v))))
     :render-fn (quote v/html)
     :transform-fn (fn [wrapped-value]
                     (def wrapped-value wrapped-value)
