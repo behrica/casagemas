@@ -5,7 +5,7 @@ Collection of clerk viewers supporting `rendering-hints` in metadata
 ## rendering hints
 
 ### Global table
-Global table of well known rendering hints (published somewhere else)
+Global table of well known rendering hints (***to be published somewhere else, not here***)
 
 | key/predicate/class                  | value class / type                       | definition |
 |----------------------------------    |----------------------------------------- | ---------- |
