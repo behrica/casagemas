@@ -29,7 +29,7 @@ Other graphical tools are invited to do the same, and do their best to render a 
 ## rendering hints
 
 ### Global table
-Global table of well known rendering hints (published somewhere else)
+Global table of well known rendering hints (***to be published somewhere else, not here***)
 
 | key/predicate/class                  | value class / type                       | definition |
 |----------------------------------    |----------------------------------------- | ---------- |
