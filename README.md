@@ -10,9 +10,15 @@ Global table of well known rendering hints (published somewhere else)
 | key/predicate/class                  | value class / type                       | definition |
 |----------------------------------    |----------------------------------------- | ---------- |
 |tech.v3.dataset/dataset?              |  tech.v3.dataset.impl.dataset.Dataset    |            | 
-|org.scicloj.rendering-hint :vega-lite |  map                                     |
-|org.scicloj.rendering-hint :mermaid   |  :string                                 |            |
-|....  | ... ... |...
+|org.scicloj.rendering-hint :vega.github.io/vega-lite |  :map                                     |
+|org.scicloj.rendering-hint :mermaid-js.github.io/mermaid   |  :string (wrapped in map)                                |            |
+|org.scicloj.rendering-hint :latex-project.org/latex       |  :string (wrapped in map)                                |            |
+|org.scicloj.rendering-hint :github.com/plotly    |  :map                                 |            |
+|org.scicloj.rendering-hint :cytoscape.org/cytoscape |  :map                                 |            |
+|org.scicloj.rendering-hint :kroki.io/kroki     |  :string (wrapped in map)                                |            |
+|org.scicloj.rendering-hint :markdown     |  :string (wrapped in map)                                |            |
+|org.scicloj.rendering-hint :github.com/stathissideris/dali | map | | |
+|org.scicloj.rendering-hint :github.com/JonyEpsilon/gg4clj | map | | | 
 
 
 ### supported by **this** renderer using Clerk
@@ -21,12 +27,12 @@ Table of rendering hints currently supported by the casegamas renderer for Clerk
 | key/predicate/class                  | value class / type                       | definition |
 |----------------------------------    |----------------------------------------- | ---------- |
 |tech.v3.dataset/dataset?              |  tech.v3.dataset.impl.dataset.Dataset    |            | 
-|org.scicloj.rendering-hint :vega-lite |  :map                                     |
-|org.scicloj.rendering-hint :mermaid   |  :string (wrapped in map)                                |            |
-|org.scicloj.rendering-hint :tex       |  :string (wrapped in map)                                |            |
-|org.scicloj.rendering-hint :plotly    |  :map                                 |            |
-|org.scicloj.rendering-hint :cytoscape |  :map                                 |            |
-|org.scicloj.rendering-hint :kroki     |  :string (wrapped in map)                                |            |
+|org.scicloj.rendering-hint :vega.github.io/vega-lite |  :map                                     |
+|org.scicloj.rendering-hint :mermaid-js.github.io/mermaid   |  :string (wrapped in map)                                |            |
+|org.scicloj.rendering-hint :latex-project.org/latex       |  :string (wrapped in map)                                |            |
+|org.scicloj.rendering-hint :github.com/plotly    |  :map                                 |            |
+|org.scicloj.rendering-hint :cytoscape.org/cytoscape |  :map                                 |            |
+|org.scicloj.rendering-hint :kroki.io/kroki     |  :string (wrapped in map)                                |            |
 |org.scicloj.rendering-hint :markdown     |  :string (wrapped in map)                                |            |
 
 

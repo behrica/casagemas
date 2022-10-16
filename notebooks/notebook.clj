@@ -2,7 +2,7 @@
 
 
 
-^{:org.scicloj/rendering-hint :vega-lite
+^{:org.scicloj/rendering-hint :vega.github.io/vega-lite
   :nextjournal.clerk/width :full}
 {:width 650
  :height 400
@@ -17,7 +17,7 @@
  :encoding {:color {:field "rate"
                     :type "quantitative"}}}
 
-^{:org.scicloj/rendering-hint :mermaid}
+^{:org.scicloj/rendering-hint :mermaid-js.github.io/mermaid}
 {:spec
  "stateDiagram-v2
     [*] --> Still
@@ -27,10 +27,10 @@
     Moving --> Crash
     Crash --> [*]"}
 
-^{:org.scicloj/rendering-hint :tex}
+^{:org.scicloj/rendering-hint :latex-project.org/latex}
 {:spec "G_{\\mu\\nu}\\equiv R_{\\mu\\nu} - {\\textstyle 1 \\over 2}R\\,g_{\\mu\\nu} = {8 \\pi G \\over c^4} T_{\\mu\\nu}"}
 
-^{:org.scicloj/rendering-hint :plotly}
+^{:org.scicloj/rendering-hint :github.com/plotly}
 {:data [{:z [[1 2 3] [3 2 1]] :type "surface"}]}
 
 
@@ -38,7 +38,7 @@
 (ds/->dataset {:a ["first column"]})
 
 
-^{:org.scicloj/rendering-hint :kroki
+^{:org.scicloj/rendering-hint :kroki.io/kroki
   :diagram-type :plantuml}
 {:spec
  "
@@ -52,7 +52,7 @@ Alice <-- Bob: Another authentication Response
 "}
 
 
-^{:org.scicloj/rendering-hint :cytoscape}
+^{:org.scicloj/rendering-hint :cytoscape.org/cytoscape}
 {:elements {:nodes [{:data {:id "a" :parent "b"} :position {:x 215 :y 85}}
                     {:data {:id "b"}}
                     {:data {:id "c" :parent "b"} :position {:x 300 :y 85}}
@@ -76,7 +76,7 @@ Alice <-- Bob: Another authentication Response
 
 
 
-;; (clerk/md "1. Lambda\n2. Eval\n3. Apply")
+
 
 ^{:org.scicloj/rendering-hint :markdown}
 {:spec "1. Lambda\n2. Eval\n3. Apply"}
