@@ -69,6 +69,3 @@
                                                 :ref (fn [el]
                                                        (when el
                                                          (-> value (assoc :container el) clj->js cytoscape)))}])])))}])
-
-
-(->> (viewers) (map :pred))

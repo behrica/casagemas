@@ -9,7 +9,6 @@
 ;; ## vega lite
 
 ^{:org.scicloj/rendering-hint :vega.github.io/vega-lite}
-
 {:width 200
  :height 200
  :data {:url "https://vega.github.io/vega-datasets/data/us-10m.json"
