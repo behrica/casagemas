@@ -3,8 +3,10 @@
             [tech.v3.dataset]
             [nextjournal.clerk.viewer :as v]))
 
-(defn viewers []
-  [
-   {:pred tech.v3.dataset/dataset?
+(def viewer-description
+  {:tech.ml/dataset
+   {:pred-via-pred tech.v3.dataset/dataset?
+    :pred-via-rendering-hint (fn [v] (= :tech.ml.dataset
+                                       (:org.scicloj/rendering-hint (meta v))))
     :transform-fn (clerk/update-val #(clerk/table {:head (tech.v3.dataset/column-names %)
-                                                   :rows (tech.v3.dataset/rowvecs %)}))}])
+                                                   :rows (tech.v3.dataset/rowvecs %)}))}})

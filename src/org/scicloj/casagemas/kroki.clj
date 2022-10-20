@@ -11,11 +11,11 @@
                                     {:diagram_source s
                                      :diagram_type (name type) :output_format (name format)}}))
 
-(defn viewers []
-  [
-   {:pred (fn [v]
-            (= :kroki.io/kroki
-               (:org.scicloj/rendering-hint (meta v))))
+(def viewer-descriptions
+  {:kroki.io/kroki
+   {:pred-via-rendering-hint (fn [v]
+                               (= :kroki.io/kroki
+                                  (:org.scicloj/rendering-hint (meta v))))
     :render-fn (quote v/html)
     :transform-fn (fn [wrapped-value]
                     (def wrapped-value wrapped-value)
@@ -25,4 +25,4 @@
                                  :svg)]
                       (-> (assoc  wrapped-value
                                   :nextjournal/value (:body kroki-result))
-                          v/mark-presented)))}])
+                          v/mark-presented)))}})

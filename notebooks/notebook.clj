@@ -1,10 +1,52 @@
 (ns notebook
-  (:require [tech.v3.dataset :as ds]))
+  (:require [tech.v3.dataset :as ds]
+            [org.scicloj.casagemas]
+            [org.scicloj.casagemas.kroki]
+            [org.scicloj.casagemas.dataset]))
+
+
+
+
+(comment
+  (require '[nextjournal.clerk :as clerk]
+           '[nextjournal.clerk.viewer :as v])
+
+  (clerk/clear-cache!)
+  (def all-viewer-descriptions
+    (merge
+     org.scicloj.casagemas/viewer-descriptions
+     org.scicloj.casagemas.kroki/viewer-descriptions
+     org.scicloj.casagemas.dataset/viewer-descriptions))
+
+  (def custom-viewers
+    (map
+     (fn [[_ viewer-description]]
+       (-> viewer-description
+           (assoc :pred (or
+                         (:pred-via-pred viewer-description)
+                         (:pred-via-rendering-hint viewer-description)))))
+     all-viewer-descriptions))
+
+     
+
+  (nextjournal.clerk.viewer/reset-viewers!
+   :default
+   (-> nextjournal.clerk.viewer/default-viewers
+
+       (nextjournal.clerk.viewer/add-viewers
+        custom-viewers)))
+
+  :ok)
+
+
 
 ;; In this notebook we give rendering hints to the values,
 ;; and then a suitable render is picked automatically
 ;; (or the default Clerk rendered,
 ;; when the rendering hint is not supported.
+
+
+;;  so this notebook does not call any function of Clerk
 
 ;; ## vega lite
 
@@ -143,6 +185,7 @@ Alice <-- Bob: Another authentication Response
 
 
 
+
 ;;  Clerk does some magic with `def`,
 ;;  so this is working:
 
@@ -161,8 +204,7 @@ Alice <-- Bob: Another authentication Response
 ;;  the following is rendered as map,
 ;;  as rendering hint is not supported
 
-^{:org.scicloj/rendering-hint :vega.github.io/not-supported-rendering
-  :nextjournal.clerk/width :full}
+^{:org.scicloj/rendering-hint :vega.github.io/not-supported-rendering}
 {:width 100
  :height 100
  :data {:url "https://vega.github.io/vega-datasets/data/us-10m.json"
@@ -194,9 +236,10 @@ Alice <-- Bob: Another authentication Response
 ^{:org.scicloj/rendering-hint :my-custom-hint}
 {:my-map :to-render-special}
 "}
-(comment
-  ;;  for testing only
-  (require  '[nextjournal.clerk :as clerk]
-            '[nextjournal.clerk.viewer :as v]))
 
-  ;; (clerk/clear-cache!)
+
+
+
+
+(def my-html ^{:org.scicloj/rendering-hint :html}
+  [:h2 "Ohai Hiccup"])

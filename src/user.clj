@@ -14,8 +14,8 @@
 
 
   (nextjournal.clerk.viewer/reset-viewers!
-   :default
-   ;; (find-ns 'nextjournal.clerk.tap)
+   ;; :default
+   (find-ns 'nextjournal.clerk.tap)
    (-> nextjournal.clerk.viewer/default-viewers
        ;; (nextjournal.clerk.viewer/add-viewers [nextjournal.clerk.tap/tap-viewer])
        (nextjournal.clerk.viewer/add-viewers
