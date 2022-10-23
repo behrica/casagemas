@@ -1,5 +1,7 @@
 # casagemas
 
+This more an **experiment** then a ready-to be used librray
+
 Collection of clerk viewers supporting `rendering-hints` via Clojure metadata.
 
 The built-in Clerk viewer selection is based on either a function call and giving / naming a viewer
